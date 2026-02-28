@@ -1,0 +1,23 @@
+[package]
+name = "lzf-rust-cli"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Command-line utility for lzf-rust"
+homepage = "https://github.com/xorgy/lzf-rust"
+repository = "https://github.com/xorgy/lzf-rust"
+license = "BSD-2-Clause"
+publish = false
+
+[[bin]]
+name = "lzf"
+path = "src/main.rs"
+
+[dependencies]
+lzf-rust = { path = "../lzf-rust", default-features = false, features = [
+  "std",
+  "encoder",
+] }
+
+[target.'cfg(unix)'.dependencies]
+rustix = { version = "1.1.2", features = ["termios"] }

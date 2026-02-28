@@ -1,0 +1,38 @@
+[package]
+description = "Pure Rust LZF compression/decompression"
+edition = "2024"
+homepage = "https://github.com/xorgy/lzf-rust"
+name = "lzf-rust"
+repository = "https://github.com/xorgy/lzf-rust"
+documentation = "https://docs.rs/lzf-rust"
+rust-version = "1.85"
+version = "0.1.0"
+keywords = ["lzf", "compression"]
+categories = ["compression", "no-std"]
+license = "ISC AND BSD-2-Clause"
+readme = "README.md"
+include = [
+    "/Cargo.toml",
+    "/README.md",
+    "/LICENSES/*",
+    "/src/**",
+    "/examples/**",
+    "/benches/**",
+    "/tests/**",
+    "/rustfmt.toml",
+]
+
+[features]
+default = ["std", "encoder"]
+std = []
+encoder = []
+
+[target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
+divan = "0.1.21"
+
+[[bench]]
+name = "comparison"
+harness = false
+
+[package.metadata.docs.rs]
+all-features = true
